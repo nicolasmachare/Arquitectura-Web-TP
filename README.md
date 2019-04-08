@@ -8,7 +8,7 @@ Negocio Elegido: Venta de productos online a traves de cuentas corrientes
 Endpoints:
 
 ******************************************************************************************************************
-/users
+/users?<user ID>
 verbo: Get
 errores:
 -404 not found
@@ -21,7 +21,7 @@ errores:
 -403 Forbidden
 descripcion: crear un usuario
 
-/users
+/users?<user ID>
 verbo: put
 errores:
 -404 not found
@@ -29,27 +29,29 @@ errores:
 -403 Forbidden
 descripcion: actualizar datos de un usuario
 
-/users
+/users?<user ID>
 verbo: delete
 errores:
 -404 not found
+-401 Unauthorized
+-403 Forbidden
 descripcion: borrar un usuario
 ******************************************************************************************************************
 
-/accounts
+/accounts?<account ID>
 verbo: Get
 errores:
 -404 not found
 descripcion: obtenes los datos de una cuenta
 
-/accounts
+/accounts?<user ID>
 verbo: Post
 errores:
 -401 Unauthorized
 -403 Forbidden
 descripcion: crear una cuenta corriente dentro del sistema
 
-/accounts
+/accounts?<account ID>
 verbo: Put
 errores:
 -401 Unauthorized
@@ -57,34 +59,35 @@ errores:
 -404 not found
 descripcion: actualizar los datos de una cuenta
 
-/accounts
+/accounts?<account ID>
 verbo: Delete
 errores:
--404 not found
+-404 not found 
+-401 Unauthorized
+-403 Forbidden
 descripcion: borrar una cuenta de una usuario
 
-
-/accounts
+/accounts?<user ID>
 verbo: List
 errores:
 -404 not found
 descripcion: listar las cuentas de una usuario
 ******************************************************************************************************************
 
-/items
+/items?<item ID>
 verbo: Get
 errores:
 -404 not found
 descripcion: obtener los items que un usuario presenta para vender
 
-/items
+/items?<user ID>
 verbo: Post
 errores:
 -401 Unauthorized
 -403 Forbidden
 descripcion: crear un items que un usuario presenta para vender
 
-/items
+/items?<item ID>
 verbo: put
 errores:
 -404 not found
@@ -92,44 +95,48 @@ errores:
 -403 Forbidden
 descripcion: actualizar los datos de los items que un usuario presenta para vender
 
-/items
+/items?<item ID>
 verbo: delete
 errores:
 -404 not found
+-401 Unauthorized
+-403 Forbidden
 descripcion: borrar un item que un usuario presenta para vender
 
-/items
+/items?<user ID>
 verbo: list
 errores:
 -404 not found
 descripcion: listar los items que un usuario presenta para vender
 ******************************************************************************************************************
 
-/sells
+/sells?<sell ID>
 verbo: get
 errores:
 -404 not found
 descripcion: mostrar el detalle de una ventas que un usuario realizo
 
-/sells
+/sells?<user ID>
 verbo: list
 errores:
 -404 not found
 descripcion: listar las ventas que un usuario realizo
+******************************************************************************************************************
 
-/buys
+/buys?<buy ID>
 verbo: get
 errores:
 -404 not found
 descripcion: mostrar el detalle de una compra que un usuario realizo
 
-/buys
+/buys?<user ID>
 verbo: list
 errores:
 -404 not found
 descripcion: listar las compras que un usuario realizo
+******************************************************************************************************************
 
-/tranfers
+/tranfers?<user ID>&<account ID>&<user ID>&<account ID>
 verbo: put
 errores:
 -404 not found
