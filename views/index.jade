@@ -1,0 +1,18 @@
+extends ./layout.jade
+block contenido
+    form(action="/init" method="POST")
+        div
+            label(for="email") Email: 
+            input(type="text" placeholder="e-mail" id="email") 
+        div
+            label(for="pass") Password: 
+            input(type="text" placeholder="password" id="pass") 
+        div
+            h1
+            input(type="submit" value="Iniciar Sesion" class="btn btn-info")
+    div
+        h1 
+        h1        
+    form(action="/creations" method="GET")
+        div
+            input(type="submit" value="Crear nuevo usuario" class="btn btn-info")
