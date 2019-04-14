@@ -17,7 +17,7 @@ app.get("/creations", function(req, res){
 });
 
 app.post("/inicioUsers", function(req, res){
-    console.log("nombre:" + req.body.email);
+    console.log("nombre:" + req.body.name);
     console.log("email:" + req.body.email);
     console.log("pass:" + req.body.password);
     res.render("init");
