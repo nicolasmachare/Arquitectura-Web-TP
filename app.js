@@ -2,20 +2,11 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
+var User = require("./models/users").User;
 
 app.set("view engine", "jade");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-mongoose.connect("mongodb://localhost/prueba");
-
-var userSchemaJson = {
-    email: String,
-    password: String
-};
-var Schema = mongoose.Schema
-var userSchema = new Schema(userSchemaJson);
-var User = mongoose.model("User",userSchema);
 
 //urls
 app.get("/", function(req, res){
@@ -38,7 +29,7 @@ app.post("/inicioUsers", function(req, res){
     console.log("email:" + req.body.email);
     console.log("pass:" + req.body.password);
 
-    var user = new User({email: req.body.email, password: req.body.password});
+    var user = new User({name: req.body.name, email: req.body.email, password: req.body.password});
     user.save(function(){
         console.log("guardado");
     });
