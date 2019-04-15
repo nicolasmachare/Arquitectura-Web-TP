@@ -30,8 +30,14 @@ app.post("/inicioUsers", function(req, res){
     console.log("pass:" + req.body.password);
 
     var user = new User({name: req.body.name, email: req.body.email, password: req.body.password});
-    user.save(function(){
-        console.log("guardado");
+    user.save(function(err){
+
+        if(err){
+            console.log(String(err));
+        }else{
+            console.log("guardado"); 
+        }
+
     });
 
     res.render("init");
