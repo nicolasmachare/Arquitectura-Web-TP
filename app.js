@@ -42,6 +42,18 @@ app.post("/inicioUsers", function(req, res){
     res.render("init");
 });
 
+app.post("/init", function(req, res){
+
+    User.findOne({email:req.body.email,password:req.body.password},function(err, userDoc){
+        console.log("Sesion Iniciada");
+        var nombre = userDoc.name;
+        var emailDoc = userDoc.email;
+  
+        res.render("init", { nombre : String(nombre), email : String(emailDoc)});
+    })
+
+});
+
 //listen final
 app.listen(8080, function(){
     console.log("Inicio...");
