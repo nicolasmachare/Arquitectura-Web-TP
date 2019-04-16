@@ -49,6 +49,7 @@ app.post("/init", function(req, res){
         var nombre = userDoc.name;
         var emailDoc = userDoc.email;
   
+        
         res.render("init", { nombre : String(nombre), email : String(emailDoc)});
     })
 
