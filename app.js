@@ -3,6 +3,13 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var User = require("./models/users").User;
+var session = require("express-session");
+
+app.use(session({
+    secret: "qwer",
+    resave: false , 
+    saveUninitialized: false 
+}));
 
 app.set("view engine", "jade");
 app.use(bodyParser.json());
@@ -49,7 +56,8 @@ app.post("/init", function(req, res){
         var nombre = userDoc.name;
         var emailDoc = userDoc.email;
   
-        
+        req.session.user_id = userDoc._id ;
+        console.log(req.session.user_id);
         res.render("init", { nombre : String(nombre), email : String(emailDoc)});
     })
 
