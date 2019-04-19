@@ -4,3 +4,9 @@ block contenido
         h1 Bienvenido! 
         h2 Nombre: #{nombre}
         h2 E-mail: #{email}
+
+    div 
+        form(action="/initActualizado/?_method=PUT" method="POST")
+            input(type="text" placeholder="Nuevo Nombre" id="newName" name="newName" class="btn btn-info" required=true)
+            input(type="submit" value="Cambiar Nombre" class="btn btn-info")
+            

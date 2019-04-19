@@ -1,0 +1,27 @@
+body{
+    background-color: aquamarine;
+}
+
+.right-space{
+    margin-right: 1em;
+}
+
+.right-space-form{
+    margin-right: 2em;
+}
+
+.top-space{
+    margin-top: 2em;
+}
+
+.remove-float{
+    float:none;
+}
+
+.big-top-space{
+    margin-top: 200px;
+}
+
+.top-space{
+    margin-top: 20px;
+}

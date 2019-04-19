@@ -2,17 +2,19 @@ extends ./layout.jade
 block contenido
     h1 Bienvenido
     h2 Ingrese sus datos para que pueda empezar a usar la operacion
-    h1
-    form(action="inicioUsers" method="POST")
-        div
-            label(for="name") Ingrese su nombre: 
-            input(type="text" id="nombre" name="name")
-        div
-            label(for="email") Ingrese su mail: 
-            input(type="text" id="email" required="required" name="email")
-        div
-            label(for="password") Ingrese un password: 
-            input(type="password" id="password" required="required" name="password") 
-        div 
-            h1
-            input(type="submit" value="Crear Usuario")
+    div(class="col-md-12 remove-float center-block big-top-space")
+        form(action="inicioUsers" method="POST")
+            div
+                label(for="name") Ingrese su nombre: 
+                input(type="text" id="nombre" name="name")
+            div
+                label(for="email") Ingrese su mail: 
+                input(type="text" id="email" required="required" name="email")
+            div
+                label(for="password") Ingrese un password: 
+                input(type="password" id="password" required="required" name="password") 
+            div(class="row top-space")
+                div(class="col-xs-12 col-sm-6")
+                    input(type="submit" value="Crear Usuario")
+                div(class="col-xs-12 col-sm-6 text-right")
+                    a(href="/") Ya tengo cuenta

@@ -4,6 +4,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var User = require("./models/users").User;
 var session = require("express-session");
+var methodOverride = require("method-override");
 
 app.use(session({
     secret: "qwer",
@@ -12,8 +13,10 @@ app.use(session({
 }));
 
 app.set("view engine", "jade");
+app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 
 //urls
 app.get("/", function(req, res){
@@ -31,6 +34,7 @@ app.get("/creations", function(req, res){
     res.render("newusers");
 });
 
+
 app.post("/inicioUsers", function(req, res){
     console.log("nombre:" + req.body.name);
     console.log("email:" + req.body.email);
@@ -43,6 +47,7 @@ app.post("/inicioUsers", function(req, res){
     },function(err){
         if(err){
             console.log(String(err));
+            res.redirect("/");
         }
     });
 
@@ -52,16 +57,49 @@ app.post("/inicioUsers", function(req, res){
 app.post("/init", function(req, res){
 
     User.findOne({email:req.body.email,password:req.body.password},function(err, userDoc){
-        console.log("Sesion Iniciada");
-        var nombre = userDoc.name;
-        var emailDoc = userDoc.email;
-  
-        req.session.user_id = userDoc._id ;
-        console.log(req.session.user_id);
-        res.render("init", { nombre : String(nombre), email : String(emailDoc)});
+
+        if(!err & userDoc!=null ){
+            console.log("Sesion Iniciada");
+            var nombre = userDoc.name;
+            var emailDoc = userDoc.email;
+    
+            req.session.user_id = userDoc._id ;
+            console.log(req.session.user_id);
+            res.render("init", { nombre : String(nombre), email : String(emailDoc)});    
+        }else{
+            res.render("index"); 
+            console.log("entre aca");
+        }
     })
 
 });
+
+
+app.put("/initActualizado", function(req, res){
+
+    User.findById(req.session.user_id,function(err, userDoc){
+
+        console.log("entre");
+
+        if(!err & userDoc!=null ){
+
+            console.log("cambiando");
+            userDoc.name = req.body.newName;
+            userDoc.save(function(err){
+                
+                var nombre = userDoc.name;
+                var emailDoc = userDoc.email;
+                res.render("init", { nombre : String(nombre), email : String(emailDoc)}); 
+            })
+
+        }else{
+            res.render(test)
+        }
+    })
+
+});
+
+
 
 //listen final
 app.listen(8080, function(){

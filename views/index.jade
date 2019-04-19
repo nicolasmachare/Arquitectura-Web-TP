@@ -1,21 +1,21 @@
 extends ./layout.jade
 block contenido
-    form(action="/init" method="POST")
-        div
-            label(for="email") Email: 
-            input(type="text" placeholder="e-mail" id="email" name="email") 
-        div
-            label(for="password") Password: 
-            input(type="password" placeholder="password" id="password" name="password") 
-        div
-            h1
-            input(type="submit" value="Iniciar Sesion" class="btn btn-info")
-    div
-        h1 
-        h1        
-    form(action="/creations" method="GET")
-        div
-            input(type="submit" value="Crear nuevo usuario" class="btn btn-info")
-    form(action="/test" method="GET")
-        div
-            input(type="submit" value="TEST" class="btn btn-info")
+    
+        form(action="/init" method="POST")
+            div( class="col-md-8 remove-float center-block text-center big-top-space")
+                label(for="email") Email: 
+                input(type="text" placeholder="e-mail" id="email" name="email") 
+            div( class="col-md-8 remove-float center-block text-center top-space")
+                label(for="password") Password: 
+                input(type="password" placeholder="password" id="password" name="password") 
+            div( class="col-md-8 remove-float center-block text-center top-space")
+                
+                input(type="submit" value="Iniciar Sesion" class="btn btn-info")
+
+           
+        form(action="/creations" method="GET")
+            div( class="col-md-8 remove-float center-block text-center top-space right-space-form") 
+                input(type="submit" value="Crear nuevo usuario" class="btn btn-info")
+        form(action="/test" method="GET")
+            div( class="col-md-8 remove-float center-block text-center top-space right-space-form") 
+                input(type="submit" value="TEST" class="btn btn-info")
