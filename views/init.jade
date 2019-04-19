@@ -6,7 +6,8 @@ block contenido
         h2 E-mail: #{email}
 
     div 
-        form(action="/initActualizado/?_method=PUT" method="POST")
+        form(action="/initActualizado/?_method=PUT" method="POST" class="top-space")
             input(type="text" placeholder="Nuevo Nombre" id="newName" name="newName" class="btn btn-info" required=true)
-            input(type="submit" value="Cambiar Nombre" class="btn btn-info")
-            
+            input(type="submit" value="Cambiar Nombre" class="btn btn-info right-space")
+        form(action="/usersBorrados/?_method=DELETE" method="POST" class="top-space")
+            input(type="submit" value="Borrar Usuario" class="btn btn-info")

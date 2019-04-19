@@ -93,7 +93,23 @@ app.put("/initActualizado", function(req, res){
             })
 
         }else{
-            res.render(test)
+            res.render("test");
+        }
+    })
+
+});
+
+app.delete("/usersBorrados", function(req, res){
+
+    User.findOneAndDelete({_id: req.session.user_id},function(err){
+
+        console.log("entre3");
+
+        if(!err){
+            console.log("eliminando");
+            res.render("index");
+        }else{
+            res.render("test");
         }
     })
 
