@@ -17,6 +17,7 @@ descripcion: obtenes los datos de un usuario
 /users
 verbo: Post
 errores:
+-401 Unauthorized
 -403 Forbidden
 descripcion: crear un usuario
 
