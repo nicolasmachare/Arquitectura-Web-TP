@@ -17,24 +17,20 @@ descripcion: obtenes los datos de un usuario
 /users
 verbo: Post
 errores:
--401 Unauthorized
 -403 Forbidden
 descripcion: crear un usuario
 
 /users?<user ID>
 verbo: put
 errores:
--404 not found
 -401 Unauthorized
--403 Forbidden
+-404 not found
 descripcion: actualizar datos de un usuario
 
 /users?<user ID>
 verbo: delete
 errores:
 -404 not found
--401 Unauthorized
--403 Forbidden
 descripcion: borrar un usuario
 ******************************************************************************************************************
 
