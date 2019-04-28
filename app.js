@@ -40,18 +40,32 @@ app.post("/inicioUsers", function(req, res){
     console.log("email:" + req.body.email);
     console.log("pass:" + req.body.password);
 
-    var user = new User({name: req.body.name, email: req.body.email, password: req.body.password});
+    User.findOne({email: req.body.email, password: req.body.password}, function(err, userDoc){
 
-    user.save().then(function(us){
-        console.log("guardado"); 
-    },function(err){
-        if(err){
-            console.log(String(err));
-            res.redirect("/");
+        if(!err){
+            if( userDoc!=null){
+                console.log("repeat");
+                res.render("newusers",{mensaje: "El email ya se encuentra registrado. Pruebe con otro"});
+            }else{
+                var user = new User({name: req.body.name, email: req.body.email, password: req.body.password});
+
+                user.save().then(function(us){ 
+                    res.render("init", { nombre : String(req.body.name), email : String(req.body.email)}); 
+                },function(err){
+                    if(err){
+                        console.log("entre por error");
+                    }
+                });
+            } 
         }
-    });
 
-    res.render("init");
+        if(err){
+            console.log("error diferente");
+            res.status(405).send('unexpected error');
+        }
+
+    })
+
 });
 
 app.post("/init", function(req, res){
