@@ -13,7 +13,7 @@ module.exports= function(app){
 
     //url para poder ver todos los user en consola
     app.get("/test", function(req, res){
-        User.find(function(err,doc){
+        Account.find(function(err,doc){
             console.log(doc)
         });
         res.render("test");

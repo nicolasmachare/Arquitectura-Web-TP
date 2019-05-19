@@ -11,24 +11,14 @@ module.exports= function(app){
     
             if(err){
                 console.log("error");
-                //res.statusCode = 301;
-                //res.setHeader("Content-type","text/plain")
-                //res.write("error");
                 res.status(300).send('error');
             }else{
                 if( userDoc==null){
                     console.log("no encontrado");
-                    //res.statusCode = 404;
-                    //res.setHeader("Content-type","text/plain");
-                    //res.write("Not found");
                     res.status(404).send('not found');
                 }
                 if(!err & userDoc!=null){
                     console.log("devolviendo");
-                    //res.statusCode = 200;
-                    //res.setHeader('Content-type','application/json');
-                    //res.write(JSON.stringify( userDoc));
-                    //res.end;
                     res.status(200).send(JSON.stringify(userDoc));
                 }
             }
