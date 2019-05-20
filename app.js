@@ -18,6 +18,7 @@ var fs = require("fs");
 //modelos de objetos cuenta y user
 var User = require("./models/users").User;
 var Account = require("./models/accounts").Account;
+var Item = require("./models/items").Account;
 
 //manejo de sesiones
 app.use(session({

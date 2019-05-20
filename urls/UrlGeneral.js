@@ -2,6 +2,7 @@
 //import de objetos de MongoDB
 var Account = require("../models/accounts").Account;
 var User = require("../models/users").User;
+var Item = require("../models/items").Item;
 
 //modulo principal donde van todas las url de pruebas
 module.exports= function(app){
@@ -13,7 +14,7 @@ module.exports= function(app){
 
     //url para poder ver todos los user en consola
     app.get("/test", function(req, res){
-        Account.find(function(err,doc){
+        Item.find(function(err,doc){
             console.log(doc)
         });
         res.render("test");
