@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 mongoose.connect("mongodb://localhost/prueba");
 
 var transferSchemaJson = {
+    id:{type: String, required: "el id es obligatorio"},
     idEmisor:{type: String, required: "el id del comprador es obligatorio"},
     idDestinatario:{type: String, required: "el id del vendedor es obligatorio"},
     amount: {type: Number, required: "El monto es obligatorio"},
