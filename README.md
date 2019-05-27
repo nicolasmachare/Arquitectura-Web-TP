@@ -69,6 +69,22 @@ verbo: List
 errores:
 -404 not found
 descripcion: listar las cuentas de una usuario
+  
+******************************************************************************************************************
+
+/loads?<user email>&<user password>&<load id>
+verbo: Get
+errores:
+-404 not found
+descripcion: obtenes los datos de una cuenta
+
+/loads?<user email>&<account alias>&<amount>
+verbo: Post
+errores:
+-401 Unauthorized
+-403 Forbidden
+descripcion: crear una cuenta corriente dentro del sistema
+  
 ******************************************************************************************************************
 
 /items?<item ID>
