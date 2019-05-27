@@ -30,3 +30,15 @@ h1{
     margin-top: 40px;
     margin-left: 8em;
 }
+
+.conMargen{
+    margin: 20px;
+}
+
+.conMuchoMargen{
+    margin: 200px;
+}
+
+.invisible{
+    visibility: hidden;
+}

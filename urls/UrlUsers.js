@@ -37,7 +37,8 @@ module.exports= function(app){
                     console.log("repeat");
                     res.status(401).send('unauthorized');
                 }else{
-                    var user = new User({name: req.body.name, email: req.body.email, password: req.body.password});
+                    var user = new User({name: req.body.name, email: req.body.email,
+                                         password: req.body.password, saldo: req.body.saldo});
     
                     user.save().then(function(us){
                         console.log("entre bien");
@@ -70,17 +71,40 @@ module.exports= function(app){
                     console.log("not found");
                     res.status(404).send('not found');
                 }else{
-                    userDoc.name = req.body.name;
+
+                    var nameReq = req.body.name;
+                    var saldoReq = req.body.saldo;
     
-                    userDoc.save().then(function(us){
-                        console.log("entre bien");
-                        res.status(200).send('OK'); 
-                    },function(err){
-                        if(err){
-                            console.log("entre por error");
-                            res.status(403).send(String(err)); 
-                        }
-                    });
+                    if(nameReq!=null){
+                        
+                        userDoc.name = nameReq;
+    
+                        userDoc.save().then(function(us){
+                            console.log("entre bien");
+                            res.status(200).send('OK'); 
+                        },function(err){
+                            if(err){
+                                console.log("entre por error");
+                                res.status(403).send(String(err)); 
+                            }
+                        });
+                    }
+
+                    if(saldoReq!=null){
+                        
+                        userDoc.saldo = saldoReq;
+    
+                        userDoc.save().then(function(us){
+                            console.log("entre bien");
+                            res.status(200).send('OK'); 
+                        },function(err){
+                            if(err){
+                                console.log("entre por error");
+                                res.status(403).send(String(err)); 
+                            }
+                        });
+                    }
+
                 } 
             }
     

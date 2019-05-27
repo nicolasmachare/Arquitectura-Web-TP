@@ -3,6 +3,7 @@
 var Account = require("../models/accounts").Account;
 var User = require("../models/users").User;
 var Item = require("../models/items").Item;
+var Load = require("../models/loads").Load;
 
 //modulo principal donde van todas las url de pruebas
 module.exports= function(app){
@@ -14,7 +15,7 @@ module.exports= function(app){
 
     //url para poder ver todos los user en consola
     app.get("/test", function(req, res){
-        Item.find(function(err,doc){
+        Load.find(function(err,doc){
             console.log(doc)
         });
         res.render("test");
@@ -39,13 +40,17 @@ module.exports= function(app){
                     console.log("repeat");
                     res.render("newusers",{mensaje: "El email ya se encuentra registrado. Pruebe con otro"});
                 }else{
-                    var user = new User({name: req.body.name, email: req.body.email, password: req.body.password});
+                    var saldo = 0;
+                    var user = new User({name: req.body.name, email: req.body.email, password: req.body.password,
+                                        saldo: saldo});
     
                     user.save().then(function(us){ 
-                        res.render("init", { nombre : String(req.body.name), email : String(req.body.email)}); 
+                        res.render("init", { nombre : String(req.body.name), email : String(req.body.email) , 
+                                            saldo: String(saldo) , mensaje: String("")}); 
                     },function(err){
                         if(err){
                             console.log("entre por error");
+                            res.render("newusers",{mensaje: "La contraseña debe tener 8 digitos como minimo"});
                         }
                     });
                 } 
@@ -69,10 +74,16 @@ module.exports= function(app){
                 console.log("Sesion Iniciada");
                 var nombre = userDoc.name;
                 var emailDoc = userDoc.email;
+                var saldoDoc = userDoc.saldo;
+
+                if(saldoDoc == null){
+                    saldoDoc = 0;
+                }
         
                 req.session.user_id = userDoc._id ;
                 console.log(req.session.user_id);
-                res.render("init", { nombre : String(nombre), email : String(emailDoc)});    
+                res.render("init", { nombre : String(nombre), email : String(emailDoc), saldo : String(saldoDoc),
+                                    mensaje: String("")});    
             }else{
                 res.render("index"); 
                 console.log("entre aca");

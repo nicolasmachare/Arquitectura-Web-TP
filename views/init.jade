@@ -4,10 +4,21 @@ block contenido
         h1 Bienvenido! 
         h2 Nombre: #{nombre}
         h2 E-mail: #{email}
+        h2 saldo: #{saldo}
+
+        h2(class="conMuchoMargen") #{mensaje}
 
     div 
         form(action="/initActualizado/?_method=PUT" method="POST" class="top-space")
             input(type="text" placeholder="Nuevo Nombre" id="newName" name="newName" class="btn btn-info" required=true)
-            input(type="submit" value="Cambiar Nombre" class="btn btn-info right-space")
+            input(type="submit" value="Cambiar Nombre" class="btn btn-info right-space" class="conMargen")
         form(action="/usersBorrados/?_method=DELETE" method="POST" class="top-space")
             input(type="submit" value="Borrar Usuario" class="btn btn-info")
+
+        form(action="/loads" method="POST" class="diferenciado")
+            input(type="text" placeholder="mail" id="email" name="email" value= "#{email}" class = "invisible")
+            input(type="text" placeholder="monto" id="amount" name="amount" class="btn btn-info" 
+                    required=true)
+            input(type="text" placeholder="Cuenta" id="alias" name="alias" class="btn btn-info" 
+                    required=true class="conMargen")
+            input(type="submit" value="Acreditar Carga" class="btn btn-info right-space" class="conMargen")

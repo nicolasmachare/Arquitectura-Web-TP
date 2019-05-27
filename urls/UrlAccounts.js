@@ -34,6 +34,7 @@ module.exports= function(app){
         var aliasReq = req.body.alias;
         var saldoReq = req.body.saldo;
         var idReq = req.body.id;
+        var cobroReq = req.body.cobro;
     
         User.findOne({email: emailReq, password: passReq}, function(err, userDoc){
     
@@ -47,7 +48,8 @@ module.exports= function(app){
                                 console.log("repeat");
                                 res.status(401).send('unauthorized');
                             }else{
-                                var account = new Account({email: emailReq, id: idReq, saldo: saldoReq, alias: aliasReq});
+                                var account = new Account({email: emailReq, id: idReq, saldo: saldoReq,
+                                                             alias: aliasReq, cobro: cobroReq});
                 
                                 account.save().then(function(us){
                                     console.log("entre bien");
@@ -93,6 +95,7 @@ module.exports= function(app){
                 }else{
                     var aliasReq = req.body.alias;
                     var saldoReq = req.body.saldo;
+                    var cobroReq = req.body.cobro;
     
                     if(aliasReq!=null){
                         
@@ -112,6 +115,21 @@ module.exports= function(app){
                     if(saldoReq!=null){
                         
                         accountDoc.saldo = saldoReq;
+    
+                        accountDoc.save().then(function(us){
+                            console.log("entre bien");
+                            res.status(200).send('OK'); 
+                        },function(err){
+                            if(err){
+                                console.log("entre por error");
+                                res.status(403).send(String(err)); 
+                            }
+                        });
+                    }
+
+                    if(cobroReq!=null){
+                        
+                        accountDoc.cobro = cobroReq;
     
                         accountDoc.save().then(function(us){
                             console.log("entre bien");
