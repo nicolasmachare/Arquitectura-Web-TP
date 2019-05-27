@@ -129,11 +129,7 @@ errores:
 -404 not found
 descripcion: mostrar el detalle de una ventas que un usuario realizo
 
-/sells?<user ID>
-verbo: list
-errores:
--404 not found
-descripcion: listar las ventas que un usuario realizo
+
 ******************************************************************************************************************
 
 /buys?<buy ID>
@@ -143,14 +139,22 @@ errores:
 descripcion: mostrar el detalle de una compra que un usuario realizo
 
 /buys?<user ID>
-verbo: list
+verbo: post
 errores:
 -404 not found
 descripcion: listar las compras que un usuario realizo
 ******************************************************************************************************************
 
 /tranfers?<user ID>&<account ID>&<user ID>&<account ID>
-verbo: put
+verbo: get
+errores:
+-404 not found
+-401 Unauthorized
+-403 Forbidden
+descripcion: tranferir plata dentro del sistema de una cuenta a otra, del mismo usuario o entre usuarios
+
+/tranfers?<user ID>&<account ID>&<user ID>&<account ID>
+verbo: post
 errores:
 -404 not found
 -401 Unauthorized
