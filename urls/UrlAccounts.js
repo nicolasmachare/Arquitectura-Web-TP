@@ -98,39 +98,19 @@ module.exports= function(app){
                     var cobroReq = req.body.cobro;
     
                     if(aliasReq!=null){
-                        
                         accountDoc.alias = aliasReq;
-    
-                        accountDoc.save().then(function(us){
-                            console.log("entre bien");
-                            res.status(200).send('OK'); 
-                        },function(err){
-                            if(err){
-                                console.log("entre por error");
-                                res.status(403).send(String(err)); 
-                            }
-                        });
                     }
     
                     if(saldoReq!=null){
-                        
                         accountDoc.saldo = saldoReq;
-    
-                        accountDoc.save().then(function(us){
-                            console.log("entre bien");
-                            res.status(200).send('OK'); 
-                        },function(err){
-                            if(err){
-                                console.log("entre por error");
-                                res.status(403).send(String(err)); 
-                            }
-                        });
                     }
 
                     if(cobroReq!=null){
-                        
                         accountDoc.cobro = cobroReq;
-    
+                    }
+
+                    if(aliasReq!=null | saldoReq!=null | cobroReq!=null){
+
                         accountDoc.save().then(function(us){
                             console.log("entre bien");
                             res.status(200).send('OK'); 

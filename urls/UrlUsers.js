@@ -76,24 +76,14 @@ module.exports= function(app){
                     var saldoReq = req.body.saldo;
     
                     if(nameReq!=null){
-                        
                         userDoc.name = nameReq;
-    
-                        userDoc.save().then(function(us){
-                            console.log("entre bien");
-                            res.status(200).send('OK'); 
-                        },function(err){
-                            if(err){
-                                console.log("entre por error");
-                                res.status(403).send(String(err)); 
-                            }
-                        });
                     }
 
                     if(saldoReq!=null){
-                        
                         userDoc.saldo = saldoReq;
-    
+                    }
+
+                    if(nameReq!=null | saldoReq!=null){
                         userDoc.save().then(function(us){
                             console.log("entre bien");
                             res.status(200).send('OK'); 

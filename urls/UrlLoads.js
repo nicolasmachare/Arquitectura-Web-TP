@@ -54,7 +54,6 @@ module.exports= function(app){
         var controlCuenta = false;
         var controlUser = false;
         var controlLocal = true;
-        var userDoc;
 
         if(isNaN(req.body.amount) == true){
             monto = null;

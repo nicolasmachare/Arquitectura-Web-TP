@@ -98,39 +98,19 @@ module.exports= function(app){
                     var stateReq = req.body.state;
     
                     if(aliasReq!=null){
-                        
                         itemDoc.alias = aliasReq;
-    
-                        itemDoc.save().then(function(us){
-                            console.log("entre bien");
-                            res.status(200).send('OK'); 
-                        },function(err){
-                            if(err){
-                                console.log("entre por error");
-                                res.status(403).send(String(err)); 
-                            }
-                        });
                     }
     
                     if(priceReq!=null){
-                        
                         itemDoc.price = priceReq;
-    
-                        itemDoc.save().then(function(us){
-                            console.log("entre bien");
-                            res.status(200).send('OK'); 
-                        },function(err){
-                            if(err){
-                                console.log("entre por error");
-                                res.status(403).send(String(err)); 
-                            }
-                        });
                     }
 
                     if(stateReq!=null){
-                        
                         itemDoc.state = stateReq;
-    
+                    }
+
+                    if(stateReq!=null | priceReq!=null | aliasReq!=null){
+
                         itemDoc.save().then(function(us){
                             console.log("entre bien");
                             res.status(200).send('OK'); 
@@ -141,7 +121,6 @@ module.exports= function(app){
                             }
                         });
                     }
-                    
                 } 
             }
     
