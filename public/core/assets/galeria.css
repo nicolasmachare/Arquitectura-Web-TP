@@ -1,0 +1,37 @@
+
+#lts_sec {
+padding-top : 30px;
+}
+
+#protfolio_sec ul.filter {
+color : #2e2e2e;
+}
+#protfolio_sec ul.filter li {
+color : #666666;
+cursor : pointer;
+display : inline-block;
+font-family : lato;
+font-size : 14px;
+margin-right : 5px;
+padding : 15px 35px;
+position : relative;
+}
+#protfolio_sec ul.filter li:hover {
+color : #36BFF3;
+}
+#protfolio_sec ul.filter li.active {
+border-bottom : 1px solid #00AFF0;
+}
+#protfolio_sec .all-portfolios {
+margin-top : 20px;
+margin-left : -10px;
+}
+#protfolio_sec .single-portfolio {
+float : left;
+margin-bottom : 10px;
+width : 277px;
+}
+#protfolio_sec .single-portfolio:hover .img_hoverlay {
+display : block;
+}
+

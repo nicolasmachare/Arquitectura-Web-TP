@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-mongoose.connect("mongodb://localhost/prueba");
+mongoose.connect("mongodb://localhost/prueba",{ useNewUrlParser: true });
 
 var loadSchemaJson = {
     id:{type: String, required: "el id es obligatorio"},

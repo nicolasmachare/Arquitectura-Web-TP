@@ -4,6 +4,13 @@
 var express = require("express");
 var app = express();
 
+
+//CORS
+var cors = require('cors');
+
+app.use(cors());
+
+
 // parseador de url y manejador de sesiones
 var bodyParser = require("body-parser");
 var session = require("express-session");

@@ -160,3 +160,13 @@ errores:
 -401 Unauthorized
 -403 Forbidden
 descripcion: tranferir plata dentro del sistema de una cuenta a otra, del mismo usuario o entre usuarios
+
+******************************************************************************************************************
+
+/login?<email>&<password>>
+verbo: post
+errores:
+-401 Unauthorized
+-403 Forbidden
+descripcion: verifica el inicio de sesión del usuario
+

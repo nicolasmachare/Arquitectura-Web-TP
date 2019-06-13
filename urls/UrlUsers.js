@@ -28,25 +28,35 @@ module.exports= function(app){
 
     app.post("/users", function(req, res){
 
-        console.log("entre3");
+        //console.log("entre4");
     
         User.findOne({email: req.body.email, password: req.body.password}, function(err, userDoc){
     
             if(!err){
                 if( userDoc!=null){
-                    console.log("repeat");
-                    res.status(401).send('unauthorized');
+                    console.log("El usuario ya existe");
+                    res.status(401).send('El usuario ya está registrado'); 
+                    //res.status(401).send('unauthorized');
+                    
+                    //res.writeHead(200, { 'Content-Type': 'application/json' }); 
+                    //res.end(JSON.stringify('Logueado ok'));
                 }else{
                     var user = new User({name: req.body.name, email: req.body.email,
                                          password: req.body.password, saldo: req.body.saldo});
     
                     user.save().then(function(us){
-                        console.log("entre bien");
-                        res.status(200).send('OK'); 
+                        console.log("Usuario Creado");
+                        res.status(200).send('Usuario Creado'); 
                     },function(err){
                         if(err){
-                            console.log("entre por error");
-                            res.status(403).send(String(err)); 
+                            console.log("Error de Creacion: "+String(err));
+                            res.status(403).send(String(err));
+                            
+                            //res.writeHead(200, { 'Content-Type': 'application/json' }); 
+                            //res.end(JSON.stringify('Hola mundo'));
+                            //res.end('{"success" : "Error de Guardado", "status" : 403}');
+                            //res.end(JSON.stringify('{"success" : "Error de Guardado", "status" : 403}'));
+                            //res.status(403).send(String(err)); 
                         }
                     });
                 } 
@@ -60,6 +70,8 @@ module.exports= function(app){
         })
     
     });
+
+    
 
     app.put("/users", function(req, res){
 
@@ -141,5 +153,32 @@ module.exports= function(app){
     });
 
 
+    app.post("/login", function(req, res){
+        User.findOne({email: req.body.email, password: req.body.password}, function(err, userDoc){
+    
+            if(!err){
+                if( userDoc!=null){
+
+                    console.log("Login Ok");
+                    res.status(200).send(JSON.stringify({"status":"Login Ok","user": userDoc.name,"email": userDoc.email,"saldo":userDoc.saldo })); 
+
+                }else{
+                    
+                    console.log("Error de login");
+                    res.status(401).send("El usuario o password es incorrecto");
+                       
+                } 
+            }
+    
+            if(err){
+
+                console.log("error");
+                res.status(403).send('unexpected error');
+
+            }
+    
+        })
+    
+    });
 
 }
